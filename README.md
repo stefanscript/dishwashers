@@ -1,41 +1,44 @@
-# TypeScript Next.js example
+# Dishwashers webapp
+## Requirements
+- should work on a tablet (seems to be the main focus) such as an iPad (768x1024), in landscape and portrait mode 
 
-This is a really simple project that shows the usage of Next.js with TypeScript.
+## GRID Page
+API for the product grid
+https://api.johnlewis.com/search/api/rest/v2/catalog/products/search/keyword?q=dishwasher &key=AIzaSyDD_6O5gUgC4tRW5f9kxC0_76XRC8W7_mI
 
-## Deploy your own
+ProductListItem 
+- productId
+- price 
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+    {
+    "was": "",
+    "then1": "", 
+    "then2": "",
+    "now": "239.00", 
+    "uom": "", 
+    "currency": "GBP"
+   },
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-typescript&project-name=with-typescript&repository-name=with-typescript)
+- title // title used on the product grid page
+- image // the url of the image to show on the grid page
+ 
+## Product Page
+For the product page please use the following API using the productId from the Product Grid API
+https://api.johnlewis.com/mobile-apps/api/v1/products/{productId}
 
-## How to use it?
+- title //The title of the product
+- media //The image urls returned here should be used on the product page.
+- Price -> Now //The now price is the price of the product, and should be assumed this price is in £
+- Details -> productInformation //Text to display in the product information 
+- displaySpecialOffer // When data is present here, this is shown on the product page under the price
+- additionalServices -> includedServices //Guarantee information
+- code // Product Code
+- Features[0] -> Attributes -> name //Product Specification Name
+- Features[0] -> Attributes ->value //Value for the product specification
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
 
-```bash
-npx create-next-app --example with-typescript with-typescript-app
-# or
-yarn create next-app --example with-typescript with-typescript-app
-```
+## Tech
+- Next.js to start with React, make use of pre-rendering, for SEO 
+- 
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
 
-## Notes
-
-This example shows how to integrate the TypeScript type system into Next.js. Since TypeScript is supported out of the box with Next.js, all we have to do is to install TypeScript.
-
-```
-npm install --save-dev typescript
-```
-
-To enable TypeScript's features, we install the type declarations for React and Node.
-
-```
-npm install --save-dev @types/react @types/react-dom @types/node
-```
-
-When we run `next dev` the next time, Next.js will start looking for any `.ts` or `.tsx` files in our project and builds it. It even automatically creates a `tsconfig.json` file for our project with the recommended settings.
-
-Next.js has built-in TypeScript declarations, so we'll get autocompletion for Next.js' modules straight away.
-
-A `type-check` script is also added to `package.json`, which runs TypeScript's `tsc` CLI in `noEmit` mode to run type-checking separately. You can then include this, for example, in your `test` scripts.
