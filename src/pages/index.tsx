@@ -3,7 +3,8 @@ import DishwashersList from "../components/DishwasherList";
 import { Product } from "../../intefaces/Product";
 import { Dishwasher } from "../components/DishwasherList/DishwashersList";
 
-export const PRODUCT_SEARCH_API = "https://api.johnlewis.com/search/api/rest/v2/catalog/products/search/keyword?q=dishwasher&key=AIzaSyDD_6O5gUgC4tRW5f9kxC0_76XRC8W7_mI";
+export const PRODUCT_SEARCH_API =
+    "https://api.johnlewis.com/search/api/rest/v2/catalog/products/search/keyword?q=dishwasher&key=AIzaSyDD_6O5gUgC4tRW5f9kxC0_76XRC8W7_mI";
 
 interface Props {
     products?: Product[];
@@ -29,9 +30,14 @@ function convertProductsToDishwashers(products: Product[]): Dishwasher[] {
 }
 
 export async function getStaticProps() {
-    await fetch(
-        PRODUCT_SEARCH_API
-    );
+    const response = await fetch(PRODUCT_SEARCH_API);
+    const data = await response.json();
+
+    return {
+        props: {
+            products: data.products,
+        },
+    };
 }
 
 export default IndexPage;

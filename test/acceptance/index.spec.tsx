@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import Home, { getStaticProps, PRODUCT_SEARCH_API } from "../../src/pages";
-import productResponse from "../dishwashers.data";
+import dishwasherSearchData from "../dishwasherSearchData";
 import { Product } from "../../intefaces/Product";
 
 describe("Given we are on the Dishwashers Home Page", () => {
@@ -15,7 +15,7 @@ describe("Given we are on the Dishwashers Home Page", () => {
 
     describe("And there are dishwashers", () => {
         it("Then we should see the first 20 dishwashers", () => {
-            const products: Product[] = productResponse.products;
+            const products: Product[] = dishwasherSearchData.products;
 
             render(<Home products={products} />);
 
@@ -26,10 +26,32 @@ describe("Given we are on the Dishwashers Home Page", () => {
 
 describe("getStaticProps", () => {
     it("should call the correct api to get the products list", async () => {
-        const fetchSpy = jest.spyOn(global, "fetch");
+        mockFetch(200, {});
+        const fetchSpy: any = jest.spyOn(global, "fetch");
 
         await getStaticProps();
 
         expect(fetchSpy).toHaveBeenCalledWith(PRODUCT_SEARCH_API);
     });
+
+    it("on success, it should return the products list", async () => {
+        mockFetch(200, dishwasherSearchData);
+
+        const result = await getStaticProps();
+
+        expect(result).toEqual({
+            props: {
+                products: dishwasherSearchData.products,
+            },
+        });
+    });
 });
+
+function mockFetch(status: number, response: any) {
+    (fetch as any).mockReturnValue(
+        Promise.resolve({
+            status: status,
+            json: () => Promise.resolve(response),
+        })
+    );
+}
