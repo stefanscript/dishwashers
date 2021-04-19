@@ -3,6 +3,15 @@ import PageTitle from "../../components/PageTitle";
 
 export interface DishwasherDetails {
     title: string;
+    media: {
+        images: {
+            altText: string;
+            urls: string[];
+        };
+    }
+    price: {
+        now: string;
+    }
 }
 
 interface Props {
@@ -10,7 +19,12 @@ interface Props {
 }
 
 const DishwasherDetailsPage: React.FC<Props> = ({ details }) => {
-    return <PageTitle text={details.title} />;
+    return (
+        <main>
+            <PageTitle text={details.title} />
+            <img src={details.media.images.urls[0]} alt={details.media.images.altText}/>
+        </main>
+    );
 };
 
 export default DishwasherDetailsPage;
