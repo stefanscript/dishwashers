@@ -12,9 +12,10 @@ interface Props {
 }
 
 const DishwashersList: React.FC<Props> = ({ dishwashers }) => {
+    if (dishwashers.length === 0) return <p>No dishwashers available</p>;
+
     return (
         <>
-            <p>No dishwashers available</p>
             {dishwashers.map((dishwasher) => {
                 return (
                     <article key={dishwasher.productId}>
