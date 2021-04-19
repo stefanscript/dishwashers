@@ -1,7 +1,8 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import Home, { Product } from "../../src/pages";
+import Home  from "../../src/pages";
 import productResponse from "../dishwashers.data";
+import { Product } from "../../intefaces/Product";
 
 describe("Given we are on the Dishwashers Home Page", () => {
     describe("And there are no dishwashers", () => {
