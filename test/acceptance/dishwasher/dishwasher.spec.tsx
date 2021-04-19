@@ -1,6 +1,6 @@
 import React from "react";
 import DishwasherDetailsPage, { DishwasherDetails } from "../../../src/pages/dishwasher/[productId]";
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 
 describe("Given we are on the Dishwasher Details Page", () => {
     describe("When there is product data", () => {
@@ -21,8 +21,9 @@ describe("Given we are on the Dishwasher Details Page", () => {
                 },
             },
             price: {
-                now: "379.00"
-            }
+                now: "379.00",
+            },
+            details: "<p>The Bosch Info here</p>",
         };
 
         it("Then title should show", () => {
@@ -40,7 +41,8 @@ describe("Given we are on the Dishwasher Details Page", () => {
                 )
             ).toHaveAttribute("src", "//johnlewis.scene7.com/is/image/JohnLewis/237026151?");
             expect(screen.getByText("£379.00")).toBeInTheDocument();
-
+            const productInfoBlock = screen.getByText("Product Information");
+            expect(within(productInfoBlock.parentElement!).getByText("The Bosch Info here")).toBeInTheDocument();
         });
     });
 });
