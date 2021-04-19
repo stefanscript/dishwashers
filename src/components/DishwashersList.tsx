@@ -19,6 +19,7 @@ const DishwashersList: React.FC<Props> = ({ dishwashers }) => {
             {dishwashers.map((dishwasher) => {
                 return (
                     <article key={dishwasher.productId}>
+                        <img src={dishwasher.image} alt={dishwasher.title} />
                         <div>{dishwasher.title}</div>
                         <div>£{dishwasher.prize.now}</div>
                     </article>

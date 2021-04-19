@@ -24,5 +24,9 @@ describe("DishwashersList List", () => {
         const dishwasherElement = screen.getByRole("article");
         expect(dishwasherElement).toHaveTextContent("Bosch Serie 2 SMV40C30GB Fully Integrated Dishwasher");
         expect(dishwasherElement).toHaveTextContent("£397.00");
+        expect(screen.getByAltText("Bosch Serie 2 SMV40C30GB Fully Integrated Dishwasher")).toHaveAttribute(
+            "src",
+            "//johnlewis.scene7.com/is/image/JohnLewis/234378764?"
+        );
     });
 });
