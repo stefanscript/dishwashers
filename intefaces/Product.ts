@@ -9,7 +9,7 @@ export interface Product {
     price: { uom: string; then2: string; then1: string; now: string; was: string; currency: string };
     image: string;
     displaySpecialOffer: string;
-    promoMessages: { offer: string; customSpecialOffer: {}; bundleHeadline: string; reducedToClear: boolean; customPromotionalMessage: string; priceMatched: string };
+    promoMessages: { offer: string; customSpecialOffer: any; bundleHeadline: string; reducedToClear: boolean; customPromotionalMessage: string; priceMatched: string };
     nonPromoMessage: string;
     defaultSkuId: string;
     colorSwatches: { basicColor: string; isAvailable: boolean; colorSwatchUrl: string; color: string; imageUrl: string; skuId: string }[];

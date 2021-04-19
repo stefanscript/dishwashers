@@ -3,7 +3,7 @@ import DishwasherListItem from "../DishwasherListItem";
 
 export interface Dishwasher {
     productId: string;
-    prize: { now: string };
+    price: { now: string };
     title: string;
     image: string;
 }

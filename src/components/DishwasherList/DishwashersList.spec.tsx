@@ -5,7 +5,7 @@ import { render, screen, within } from "@testing-library/react";
 describe("DishwashersList List", () => {
     const boschDishwasher: Dishwasher = {
         productId: "1955287",
-        prize: {
+        price: {
             now: "397.00",
         },
         title: "Bosch Serie 2 SMV40C30GB Fully Integrated Dishwasher",
@@ -14,7 +14,7 @@ describe("DishwashersList List", () => {
 
     const siemensDishwasher: Dishwasher = {
         productId: "4189551",
-        prize: {
+        price: {
             now: "549.00",
         },
         title: "Siemens iQ300 SN236W03MG Freestanding Dishwasher, White",

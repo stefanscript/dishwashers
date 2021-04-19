@@ -10,7 +10,7 @@ const DishwasherListItem: React.FC<Props> = ({ dishwasher }) => {
         <article key={dishwasher.productId}>
             <img src={dishwasher.image} alt={dishwasher.title} />
             <div>{dishwasher.title}</div>
-            <div>£{dishwasher.prize.now}</div>
+            <div>£{dishwasher.price.now}</div>
         </article>
     );
 };

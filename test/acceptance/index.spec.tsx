@@ -13,7 +13,7 @@ describe("Given we are on the Dishwashers Home Page", () => {
         });
     });
 
-    xdescribe("And there are dishwashers", () => {
+    describe("And there are dishwashers", () => {
         it("Then we should see the first 20 dishwashers", () => {
             const products: Product[] = productResponse.products;
 
