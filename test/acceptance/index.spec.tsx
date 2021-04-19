@@ -11,6 +11,14 @@ describe("Given we are on the Dishwashers Home Page", () => {
 
             expect(screen.getByText(/No dishwashers available/)).toBeInTheDocument();
         });
+
+        it("Then it should display the title", () => {
+            const products: Product[] = dishwasherSearchData.products;
+
+            render(<Home products={products} />);
+
+            expect(screen.getByText("Dishwashers (0)")).toBeInTheDocument();
+        });
     });
 
     describe("And there are dishwashers", () => {
@@ -27,7 +35,7 @@ describe("Given we are on the Dishwashers Home Page", () => {
 
             render(<Home products={products} />);
 
-            expect(screen.getByText("Dishwashers(24)")).toBeInTheDocument();
+            expect(screen.getByText("Dishwashers (24)")).toBeInTheDocument();
         });
     });
 });
