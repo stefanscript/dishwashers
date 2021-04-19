@@ -3,7 +3,7 @@ import DishwashersList, { Dishwasher } from "./DishwashersList";
 import { render, screen, within } from "@testing-library/react";
 
 describe("DishwashersList List", () => {
-    const boschDishwasher = {
+    const boschDishwasher: Dishwasher = {
         productId: "1955287",
         prize: {
             now: "397.00",
@@ -12,7 +12,7 @@ describe("DishwashersList List", () => {
         image: "//johnlewis.scene7.com/is/image/JohnLewis/234378764?",
     };
 
-    const siemensDishwasher = {
+    const siemensDishwasher: Dishwasher = {
         productId: "4189551",
         prize: {
             now: "549.00",

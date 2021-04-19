@@ -1,5 +1,5 @@
 import React from "react";
-import DishwashersList from "../components/DishwashersList";
+import DishwashersList from "../components/DishwasherList";
 import { Product } from "../../intefaces/Product";
 
 interface Props {

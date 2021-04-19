@@ -1,4 +1,5 @@
 import React from "react";
+import DishwasherListItem from "../DishwasherListItem";
 
 export interface Dishwasher {
     productId: string;
@@ -16,15 +17,9 @@ const DishwashersList: React.FC<Props> = ({ dishwashers }) => {
 
     return (
         <>
-            {dishwashers.map((dishwasher) => {
-                return (
-                    <article key={dishwasher.productId}>
-                        <img src={dishwasher.image} alt={dishwasher.title} />
-                        <div>{dishwasher.title}</div>
-                        <div>£{dishwasher.prize.now}</div>
-                    </article>
-                );
-            })}
+            {dishwashers.map((dishwasher) => (
+                <DishwasherListItem key={dishwasher.productId} dishwasher={dishwasher} />
+            ))}
         </>
     );
 };
