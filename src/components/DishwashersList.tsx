@@ -17,7 +17,12 @@ const DishwashersList: React.FC<Props> = ({ dishwashers }) => {
     return (
         <>
             {dishwashers.map((dishwasher) => {
-                return <article key={dishwasher.productId}/>;
+                return (
+                    <article key={dishwasher.productId}>
+                        <div>{dishwasher.title}</div>
+                        <div>£{dishwasher.prize.now}</div>
+                    </article>
+                );
             })}
         </>
     );

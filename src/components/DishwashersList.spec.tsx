@@ -13,7 +13,7 @@ describe("DishwashersList List", () => {
         const dishwasher: Dishwasher = {
             productId: "1955287",
             prize: {
-                now: "397.00"
+                now: "397.00",
             },
             title: "Bosch Serie 2 SMV40C30GB Fully Integrated Dishwasher",
             image: "//johnlewis.scene7.com/is/image/JohnLewis/234378764?",
@@ -21,6 +21,8 @@ describe("DishwashersList List", () => {
 
         render(<DishwashersList dishwashers={[dishwasher]} />);
 
-        expect(screen.getByRole("article")).toBeInTheDocument();
+        const dishwasherElement = screen.getByRole("article");
+        expect(dishwasherElement).toHaveTextContent("Bosch Serie 2 SMV40C30GB Fully Integrated Dishwasher");
+        expect(dishwasherElement).toHaveTextContent("£397.00");
     });
 });
