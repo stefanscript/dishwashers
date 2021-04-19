@@ -2,7 +2,7 @@ import React from "react";
 import DishwashersList from "../components/DishwasherList";
 import { Product } from "../../intefaces/Product";
 import { Dishwasher } from "../components/DishwasherList/DishwashersList";
-import styles from "../styles/page.module.css";
+import PageTitle from "../components/PageTitle";
 
 export const PRODUCT_SEARCH_API =
     "https://api.johnlewis.com/search/api/rest/v2/catalog/products/search/keyword?q=dishwasher&key=AIzaSyDD_6O5gUgC4tRW5f9kxC0_76XRC8W7_mI";
@@ -17,7 +17,7 @@ const IndexPage: React.FC<Props> = ({ products = [] }) => {
 
     return (
         <main>
-            <h1 className={styles.title}>Dishwashers ({dishwashers.length})</h1>
+            <PageTitle text={`Dishwashers (${dishwashers.length})`} />
             <DishwashersList dishwashers={first20Dishwashers} />
         </main>
     );

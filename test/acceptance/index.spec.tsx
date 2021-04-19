@@ -13,9 +13,7 @@ describe("Given we are on the Dishwashers Home Page", () => {
         });
 
         it("Then it should display the title", () => {
-            const products: Product[] = dishwasherSearchData.products;
-
-            render(<Home products={products} />);
+            render(<Home />);
 
             expect(screen.getByText("Dishwashers (0)")).toBeInTheDocument();
         });
