@@ -1,6 +1,6 @@
 import React from "react";
 import DishwashersList, { Dishwasher } from "./DishwashersList";
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 
 describe("DishwashersList List", () => {
     it("should display No dishwashers available", () => {
@@ -9,7 +9,7 @@ describe("DishwashersList List", () => {
         expect(screen.getByText(/No dishwashers available/)).toBeInTheDocument();
     });
 
-    it("given one dishwasher it should display it", () => {
+    it("should display one dishwasher", () => {
         const dishwasher: Dishwasher = {
             productId: "1955287",
             prize: {
@@ -24,7 +24,7 @@ describe("DishwashersList List", () => {
         const dishwasherElement = screen.getByRole("article");
         expect(dishwasherElement).toHaveTextContent("Bosch Serie 2 SMV40C30GB Fully Integrated Dishwasher");
         expect(dishwasherElement).toHaveTextContent("£397.00");
-        expect(screen.getByAltText("Bosch Serie 2 SMV40C30GB Fully Integrated Dishwasher")).toHaveAttribute(
+        expect(within(dishwasherElement).getByAltText("Bosch Serie 2 SMV40C30GB Fully Integrated Dishwasher")).toHaveAttribute(
             "src",
             "//johnlewis.scene7.com/is/image/JohnLewis/234378764?"
         );
