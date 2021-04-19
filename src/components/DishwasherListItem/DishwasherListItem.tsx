@@ -16,7 +16,7 @@ const DishwasherListItem: React.FC<Props> = ({ dishwasher }) => {
                 </a>
             </Link>
             <div>{dishwasher.title}</div>
-            <strong>£{dishwasher.price.now}</strong>
+            <strong>&pound;{dishwasher.price.now}</strong>
         </article>
     );
 };
