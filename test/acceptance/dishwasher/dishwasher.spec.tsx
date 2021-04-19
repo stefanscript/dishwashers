@@ -19,6 +19,9 @@ describe("Given we are on the Dishwasher Details Page", () => {
                         "//johnlewis.scene7.com/is/image/JohnLewis/237026151alt10?",
                     ],
                 },
+            },
+            price: {
+                now: "379.00"
             }
         };
 
@@ -36,6 +39,8 @@ describe("Given we are on the Dishwasher Details Page", () => {
                     "Buy Bosch Serie 2 SMS25EW00G Freestanding Dishwasher, White Online at johnlewis.com"
                 )
             ).toHaveAttribute("src", "//johnlewis.scene7.com/is/image/JohnLewis/237026151?");
+            expect(screen.getByText("£379.00")).toBeInTheDocument();
+
         });
     });
 });

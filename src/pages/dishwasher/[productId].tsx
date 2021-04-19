@@ -23,6 +23,7 @@ const DishwasherDetailsPage: React.FC<Props> = ({ details }) => {
         <main>
             <PageTitle text={details.title} />
             <img src={details.media.images.urls[0]} alt={details.media.images.altText}/>
+            <div>&pound;{details.price.now}</div>
         </main>
     );
 };
