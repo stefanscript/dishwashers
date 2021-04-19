@@ -1,11 +1,13 @@
 import React from "react";
-import {render, screen} from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Home from "../../src/pages";
 
-describe("Index", () => {
-    it("prints Hello", () => {
-        render(<Home />);
+describe("Given we are on the Dishwashers Home Page", () => {
+    describe("And there are no dishwashers", () => {
+        it("Then we should see a 'no dishwashers available' message", () => {
+            render(<Home />);
 
-        expect(screen.getByText("Hello")).toBeInTheDocument();
+            expect(screen.getByText(/No dishwashers available/)).toBeInTheDocument();
+        });
     });
 });

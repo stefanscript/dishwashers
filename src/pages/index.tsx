@@ -1,8 +1,8 @@
 import React from "react";
 
-const IndexPage:React.FC = () => (
+const IndexPage: React.FC = () => (
     <>
-        <h1>Hello</h1>
+        <p>No dishwashers available</p>
     </>
 );
 
