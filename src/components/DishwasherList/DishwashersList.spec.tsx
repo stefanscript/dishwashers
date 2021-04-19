@@ -27,17 +27,6 @@ describe("DishwashersList List", () => {
         expect(screen.getByText("No dishwashers available")).toBeInTheDocument();
     });
 
-    it("should display one dishwasher", () => {
-        render(<DishwashersList dishwashers={[boschDishwasher]} />);
-
-        const dishwasherElement = screen.getByRole("article");
-        expect(dishwasherElement).toHaveTextContent("Bosch Serie 2 SMV40C30GB Fully Integrated Dishwasher");
-        expect(dishwasherElement).toHaveTextContent("£397.00");
-        expect(
-            within(dishwasherElement).getByAltText("Bosch Serie 2 SMV40C30GB Fully Integrated Dishwasher")
-        ).toHaveAttribute("src", "//johnlewis.scene7.com/is/image/JohnLewis/234378764?");
-    });
-
     it("should display multiple dishwashers", () => {
         render(<DishwashersList dishwashers={[boschDishwasher, siemensDishwasher]} />);
 
