@@ -24,6 +24,9 @@ describe("Given we are on the Dishwasher Details Page", () => {
                 now: "379.00",
             },
             details: "<p>The Bosch Info here</p>",
+            additionalServices: {
+                includedServices: "2 year guarantee included",
+            },
         };
 
         it("Then title should show", () => {
@@ -43,6 +46,7 @@ describe("Given we are on the Dishwasher Details Page", () => {
             expect(screen.getByText("£379.00")).toBeInTheDocument();
             const productInfoBlock = screen.getByText("Product Information");
             expect(within(productInfoBlock.parentElement!).getByText("The Bosch Info here")).toBeInTheDocument();
+            expect(screen.getByText("2 year guarantee included")).toBeInTheDocument();
         });
     });
 });

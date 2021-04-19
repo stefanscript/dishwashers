@@ -13,6 +13,9 @@ export interface DishwasherDetails {
         now: string;
     }
     details: string;
+    additionalServices: {
+        includedServices: string
+    };
 }
 
 interface Props {
@@ -25,6 +28,7 @@ const DishwasherDetailsPage: React.FC<Props> = ({ details }) => {
             <PageTitle text={details.title} />
             <img src={details.media.images.urls[0]} alt={details.media.images.altText}/>
             <div>&pound;{details.price.now}</div>
+            <div>{details.additionalServices.includedServices}</div>
             <div>
                 <h2>Product Information</h2>
                 <div dangerouslySetInnerHTML={{__html: details.details}} />
