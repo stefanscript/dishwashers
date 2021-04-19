@@ -21,6 +21,14 @@ describe("Given we are on the Dishwashers Home Page", () => {
 
             expect(screen.getAllByRole("article").length).toEqual(20);
         });
+
+        it("Then it should display the title", () => {
+            const products: Product[] = dishwasherSearchData.products;
+
+            render(<Home products={products} />);
+
+            expect(screen.getByText("Dishwashers(24)")).toBeInTheDocument();
+        });
     });
 });
 

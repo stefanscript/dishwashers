@@ -11,12 +11,14 @@ interface Props {
 }
 
 const IndexPage: React.FC<Props> = ({ products = [] }) => {
-    const first20Dishwashers: Dishwasher[] = convertProductsToDishwashers(products).slice(0, 20);
+    const dishwashers: Dishwasher[] = convertProductsToDishwashers(products);
+    const first20Dishwashers: Dishwasher[] = dishwashers.slice(0, 20);
 
     return (
-        <>
+        <main>
+            <h1>Dishwashers({dishwashers.length})</h1>
             <DishwashersList dishwashers={first20Dishwashers} />
-        </>
+        </main>
     );
 };
 
