@@ -3,6 +3,8 @@ import DishwashersList from "../components/DishwasherList";
 import { Product } from "../../intefaces/Product";
 import { Dishwasher } from "../components/DishwasherList/DishwashersList";
 
+export const PRODUCT_SEARCH_API = "https://api.johnlewis.com/search/api/rest/v2/catalog/products/search/keyword?q=dishwasher&key=AIzaSyDD_6O5gUgC4tRW5f9kxC0_76XRC8W7_mI";
+
 interface Props {
     products?: Product[];
 }
@@ -24,6 +26,12 @@ function convertProductsToDishwashers(products: Product[]): Dishwasher[] {
         title: product.title,
         image: product.image,
     }));
+}
+
+export async function getStaticProps() {
+    await fetch(
+        PRODUCT_SEARCH_API
+    );
 }
 
 export default IndexPage;
