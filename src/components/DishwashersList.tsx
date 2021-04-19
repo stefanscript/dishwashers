@@ -1,6 +1,6 @@
 import React from "react";
 
-interface Dishwasher {}
+export interface Dishwasher {}
 interface Props {
     dishwashers: Dishwasher[];
 }
