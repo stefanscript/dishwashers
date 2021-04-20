@@ -1,4 +1,5 @@
 # Dishwashers webapp
+[https://dishwashers.vercel.app/](https://dishwashers.vercel.app/)
 ## Main Requirements
 Build a webapp that allows customers to see the range of dishwashers.  
 Should work on a tablet (seems to be the main focus) such as an iPad (768x1024), in landscape and portrait mode.   
@@ -36,12 +37,12 @@ https://api.johnlewis.com/mobile-apps/api/v1/products/{productId}
 - displaySpecialOffer // When data is present here, this is shown on the product page under the price
 - additionalServices -> includedServices //Guarantee information
 - code // Product Code
-- Features[0] -> Attributes -> name //Product Specification Name
-- Features[0] -> Attributes ->value //Value for the product specification
+- Details -> Features[0] -> Attributes -> name //Product Specification Name
+- Details -> Features[0] -> Attributes ->value //Value for the product specification
 
 
 ## Tech
 - Next.js to start with React, make use of pre-rendering, for SEO 
-- 
+- testing library, jest for testing
 
 
