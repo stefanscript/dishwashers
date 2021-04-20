@@ -44,7 +44,7 @@ describe("Given we are on the Dishwasher Details Page", () => {
             expect(screen.getByText("Bosch Serie 2 SMS25EW00G Freestanding Dishwasher, White")).toBeInTheDocument();
         });
 
-        xit("Then the dishwasher details should show", () => {
+        it("Then the dishwasher details should show", () => {
             render(<DishwasherDetailsPage details={details} />);
 
             expect(
@@ -57,9 +57,10 @@ describe("Given we are on the Dishwasher Details Page", () => {
             expect(screen.getByText("2 year guarantee included")).toBeInTheDocument();
             expect(screen.getByText("Product code: 81701226")).toBeInTheDocument();
             expect(screen.getByText("Save £60 (price includes saving)")).toBeInTheDocument();
-            expect(screen.getByText("Delay Start Yes - up to 24 hours")).toBeInTheDocument();
-            expect(screen.getByText("Program Sequence Indicator Yes")).toBeInTheDocument();
-            expect(screen.getByText("Delicate Wash Yes")).toBeInTheDocument();
+            const productSpec = screen.getByText("Product Specification").parentElement!;
+            expect(productSpec).toHaveTextContent("Delay Start Yes - up to 24 hours");
+            expect(productSpec).toHaveTextContent("Program Sequence Indicator Yes");
+            expect(productSpec).toHaveTextContent("Delicate Wash Yes");
         });
     });
 });
