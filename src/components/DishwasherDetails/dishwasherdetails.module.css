@@ -9,6 +9,7 @@
 .carousel {
     padding: 2em 0;
     text-align: center;
+    min-height: 400px;
     height: 40vh;
 }
 .carousel img {
@@ -56,4 +57,10 @@
 }
 .specListItem:last-of-type {
     border-bottom: 0;
+}
+
+@media screen and (min-width: 769px) {
+    .separator {
+        display: none;
+    }
 }
