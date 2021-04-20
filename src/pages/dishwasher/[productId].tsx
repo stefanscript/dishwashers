@@ -3,6 +3,7 @@ import PageTitle from "../../components/PageTitle";
 import DishwasherDetails from "../../components/DishwasherDetails/DishwasherDetails";
 import { GetServerSideProps } from "next";
 import Link from "next/link";
+import BackIcon from "../../components/BackIcon";
 
 export interface DishwasherDetailsInterface {
     title: string;
@@ -34,7 +35,7 @@ const DishwasherDetailsPage: React.FC<Props> = ({ details }) => {
     return (
         <main>
             <Link href={"/"}>
-                <a>back</a>
+                <a><BackIcon /></a>
             </Link>
             <PageTitle text={details.title} />
             <DishwasherDetails details={details} />
