@@ -7,43 +7,45 @@ import { render, screen } from "@testing-library/react";
 import { mockFetch } from "../../utils";
 import { GetServerSidePropsContext } from "next";
 import dishwasherDetailsData from "../../dishwasherDetailsData";
+import userEvent from "@testing-library/user-event/dist";
+import * as nextRouter from "next/router";
 
 describe("Given we are on the Dishwasher Details Page", () => {
-    describe("When there is product data", () => {
-        const details: DishwasherDetailsInterface = {
-            title: "Bosch Serie 2 SMS25EW00G Freestanding Dishwasher, White",
-            media: {
-                images: {
-                    altText: "Buy Bosch Serie 2 SMS25EW00G Freestanding Dishwasher, White Online at johnlewis.com",
-                    urls: [
-                        "//johnlewis.scene7.com/is/image/JohnLewis/237026151?",
-                        "//johnlewis.scene7.com/is/image/JohnLewis/237026151alt1?",
-                        "//johnlewis.scene7.com/is/image/JohnLewis/237026151alt2?",
-                        "//johnlewis.scene7.com/is/image/JohnLewis/237026151alt3?",
-                        "//johnlewis.scene7.com/is/image/JohnLewis/237026151alt4?",
-                        "//johnlewis.scene7.com/is/image/JohnLewis/237026151alt5?",
-                        "//johnlewis.scene7.com/is/image/JohnLewis/237026151alt10?",
-                    ],
-                },
+    const details: DishwasherDetailsInterface = {
+        title: "Bosch Serie 2 SMS25EW00G Freestanding Dishwasher, White",
+        media: {
+            images: {
+                altText: "Buy Bosch Serie 2 SMS25EW00G Freestanding Dishwasher, White Online at johnlewis.com",
+                urls: [
+                    "//johnlewis.scene7.com/is/image/JohnLewis/237026151?",
+                    "//johnlewis.scene7.com/is/image/JohnLewis/237026151alt1?",
+                    "//johnlewis.scene7.com/is/image/JohnLewis/237026151alt2?",
+                    "//johnlewis.scene7.com/is/image/JohnLewis/237026151alt3?",
+                    "//johnlewis.scene7.com/is/image/JohnLewis/237026151alt4?",
+                    "//johnlewis.scene7.com/is/image/JohnLewis/237026151alt5?",
+                    "//johnlewis.scene7.com/is/image/JohnLewis/237026151alt10?",
+                ],
             },
-            price: {
-                now: "379.00",
-            },
-            details: {
-                productInformation: "<p>The Bosch Info here</p>",
-            },
-            features: [
-                { name: "Delay Start", value: "Yes - up to 24 hours" },
-                { name: "Program Sequence Indicator", value: "Yes" },
-                { name: "Delicate Wash", value: "Yes" },
-            ],
-            additionalServices: {
-                includedServices: "2 year guarantee included",
-            },
-            code: "81701226",
-            displaySpecialOffer: "Save £60 (price includes saving)",
-        };
+        },
+        price: {
+            now: "379.00",
+        },
+        details: {
+            productInformation: "<p>The Bosch Info here</p>",
+        },
+        features: [
+            { name: "Delay Start", value: "Yes - up to 24 hours" },
+            { name: "Program Sequence Indicator", value: "Yes" },
+            { name: "Delicate Wash", value: "Yes" },
+        ],
+        additionalServices: {
+            includedServices: "2 year guarantee included",
+        },
+        code: "81701226",
+        displaySpecialOffer: "Save £60 (price includes saving)",
+    };
 
+    describe("When there is product data", () => {
         it("Then title should show", () => {
             render(<DishwasherDetailsPage details={details} />);
 
@@ -67,6 +69,21 @@ describe("Given we are on the Dishwasher Details Page", () => {
             expect(productSpec).toHaveTextContent("Delay Start Yes - up to 24 hours");
             expect(productSpec).toHaveTextContent("Program Sequence Indicator Yes");
             expect(productSpec).toHaveTextContent("Delicate Wash Yes");
+        });
+    });
+
+    describe("When the user presses the back button", () => {
+        it("Then it should return to the home page", () => {
+            jest.spyOn(nextRouter, "useRouter").mockReturnValue({
+                back: jest.fn(),
+                push: jest.fn(() => Promise.resolve()),
+                prefetch: jest.fn(() => Promise.resolve()),
+            } as any);
+            render(<DishwasherDetailsPage details={details} />);
+
+            userEvent.click(screen.getByRole("link"));
+
+            expect(nextRouter.useRouter().push).toHaveBeenCalledWith("/", expect.anything(), expect.anything());
         });
     });
 });

@@ -2,7 +2,7 @@ import React from "react";
 import PageTitle from "../../components/PageTitle";
 import DishwasherDetails from "../../components/DishwasherDetails/DishwasherDetails";
 import { GetServerSideProps } from "next";
-import { PRODUCT_SEARCH_API } from "../index";
+import Link from "next/link";
 
 export interface DishwasherDetailsInterface {
     title: string;
@@ -33,6 +33,9 @@ interface Props {
 const DishwasherDetailsPage: React.FC<Props> = ({ details }) => {
     return (
         <main>
+            <Link href={"/"}>
+                <a>back</a>
+            </Link>
             <PageTitle text={details.title} />
             <DishwasherDetails details={details} />
         </main>
