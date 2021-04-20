@@ -19,7 +19,8 @@ const DishwasherDetails: React.FC<Props> = ({ details }) => {
             <div>
                 <h2>Product Specification</h2>
                 <ul>
-                    <li><div>{details.features[0].name}</div><div>{details.features[0].value}</div></li>
+                    <li><div>{details.features[0].name}</div> <div>{details.features[0].value}</div></li>
+                    <li><div>{details.features[1].name}</div> <div>{details.features[1].value}</div></li>
                 </ul>
             </div>
         </>

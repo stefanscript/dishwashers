@@ -76,8 +76,8 @@ describe("DishwasherDetails", () => {
     });
 
     it("renders the Product Specification", () => {
-        const productSpec = within(screen.getByText("Product Specification").parentElement!);
-        expect(productSpec.getByText("Noise level")).toBeInTheDocument();
-        expect(productSpec.getByText("Not even the dogs can hear it")).toBeInTheDocument();
+        const productSpec = screen.getByText("Product Specification").parentElement!;
+        expect(productSpec).toHaveTextContent("Noise level Not even the dogs can hear it");
+        expect(productSpec).toHaveTextContent("Digital Display Yes");
     });
 });
