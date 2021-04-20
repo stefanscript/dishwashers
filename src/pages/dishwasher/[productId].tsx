@@ -43,9 +43,31 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     const { productId } = context.query;
     const response = await fetch(`https://api.johnlewis.com/mobile-apps/api/v1/products/${productId}`);
     const data = await response.json();
-    console.log(data);
+    const details: DishwasherDetailsInterface = {
+        title: data.title,
+        media: {
+            images: data.media.images,
+        },
+        price: {
+            now: data.price.now,
+        },
+        details: {
+            productInformation: data.details.productInformation,
+        },
+        features: data.details.features[0].attributes.map((attribute: { name: string; value: string }) => ({
+            name: attribute.name,
+            value: attribute.value,
+        })),
+        additionalServices: {
+            includedServices: data.additionalServices.includedServices[0],
+        },
+        code: data.code,
+        displaySpecialOffer: data.displaySpecialOffer,
+    };
     return {
-        props: {},
+        props: {
+            details,
+        },
     };
 };
 
