@@ -4,6 +4,7 @@ import { DishwasherDetailsInterface } from "../../pages/dishwasher/[productId]";
 interface Props {
     details: DishwasherDetailsInterface;
 }
+
 const DishwasherDetails: React.FC<Props> = ({ details }) => {
     return (
         <>
@@ -19,8 +20,13 @@ const DishwasherDetails: React.FC<Props> = ({ details }) => {
             <div>
                 <h2>Product Specification</h2>
                 <ul>
-                    <li><div>{details.features[0].name}</div> <div>{details.features[0].value}</div></li>
-                    <li><div>{details.features[1].name}</div> <div>{details.features[1].value}</div></li>
+                    {details.features.map((spec) => (
+                        <li key={spec.name}>
+                            <div>{spec.name}</div>
+                            &nbsp;
+                            <div>{spec.value}</div>
+                        </li>
+                    ))}
                 </ul>
             </div>
         </>
