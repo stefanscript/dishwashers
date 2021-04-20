@@ -23,7 +23,9 @@ describe("Given we are on the Dishwasher Details Page", () => {
             price: {
                 now: "379.00",
             },
-            details: "<p>The Bosch Info here</p>",
+            details: {
+                productInformation: "<p>The Bosch Info here</p>"
+            },
             additionalServices: {
                 includedServices: "2 year guarantee included",
             },

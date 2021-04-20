@@ -12,7 +12,9 @@ export interface DishwasherDetails {
     price: {
         now: string;
     }
-    details: string;
+    details: {
+        productInformation: string;
+    };
     additionalServices: {
         includedServices: string
     };
@@ -33,7 +35,7 @@ const DishwasherDetailsPage: React.FC<Props> = ({ details }) => {
             <div>
                 <h2>Product Information</h2>
                 <h3>Product code: {details.code}</h3>
-                <div dangerouslySetInnerHTML={{__html: details.details}} />
+                <div dangerouslySetInnerHTML={{__html: details.details.productInformation}} />
             </div>
         </main>
     );
