@@ -1,6 +1,11 @@
 import React from "react";
-import DishwasherDetailsPage, { DishwasherDetailsInterface } from "../../../src/pages/dishwasher/[productId]";
-import { render, screen, within } from "@testing-library/react";
+import DishwasherDetailsPage, {
+    DishwasherDetailsInterface,
+    getServerSideProps
+} from "../../../src/pages/dishwasher/[productId]";
+import { render, screen } from "@testing-library/react";
+import { mockFetch } from "../../utils";
+import { GetServerSidePropsContext } from "next";
 
 describe("Given we are on the Dishwasher Details Page", () => {
     describe("When there is product data", () => {
@@ -62,5 +67,24 @@ describe("Given we are on the Dishwasher Details Page", () => {
             expect(productSpec).toHaveTextContent("Program Sequence Indicator Yes");
             expect(productSpec).toHaveTextContent("Delicate Wash Yes");
         });
+    });
+});
+
+describe("getServerSideProps", () => {
+    it("should call the correct api to get the products list", async () => {
+        mockFetch(200, {});
+        const fetchSpy: any = jest.spyOn(global, "fetch");
+
+        const context: GetServerSidePropsContext = ({
+            params: undefined,
+            query: {productId: "12345"},
+            res: "",
+            resolvedUrl: "",
+        } as unknown) as GetServerSidePropsContext;
+
+        await getServerSideProps(context);
+
+
+        expect(fetchSpy).toHaveBeenCalledWith("https://api.johnlewis.com/mobile-apps/api/v1/products/12345");
     });
 });

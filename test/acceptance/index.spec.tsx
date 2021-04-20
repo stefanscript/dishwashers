@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react";
 import Home, { getStaticProps, PRODUCT_SEARCH_API } from "../../src/pages";
 import dishwasherSearchData from "../dishwasherSearchData";
 import { Product } from "../../intefaces/Product";
+import { mockFetch } from "../utils";
 
 describe("Given we are on the Dishwashers Home Page", () => {
     describe("And there are no dishwashers", () => {
@@ -60,12 +61,3 @@ describe("getStaticProps", () => {
         });
     });
 });
-
-function mockFetch(status: number, response: any) {
-    (fetch as any).mockReturnValue(
-        Promise.resolve({
-            status: status,
-            json: () => Promise.resolve(response),
-        })
-    );
-}
