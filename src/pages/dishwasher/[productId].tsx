@@ -1,42 +1,38 @@
 import React from "react";
 import PageTitle from "../../components/PageTitle";
+import DishwasherDetails from "../../components/DishwasherDetails/DishwasherDetails";
 
-export interface DishwasherDetails {
+export interface DishwasherDetailsInterface {
     title: string;
     media: {
         images: {
             altText: string;
             urls: string[];
         };
-    }
+    };
     price: {
         now: string;
-    }
+    };
     details: {
         productInformation: string;
     };
+    features: { name: string; value: string }[];
+    displaySpecialOffer: string;
     additionalServices: {
-        includedServices: string
+        includedServices: string;
     };
     code: string;
 }
 
 interface Props {
-    details: DishwasherDetails;
+    details: DishwasherDetailsInterface;
 }
 
 const DishwasherDetailsPage: React.FC<Props> = ({ details }) => {
     return (
         <main>
             <PageTitle text={details.title} />
-            <img src={details.media.images.urls[0]} alt={details.media.images.altText}/>
-            <div>&pound;{details.price.now}</div>
-            <div>{details.additionalServices.includedServices}</div>
-            <div>
-                <h2>Product Information</h2>
-                <h3>Product code: {details.code}</h3>
-                <div dangerouslySetInnerHTML={{__html: details.details.productInformation}} />
-            </div>
+            <DishwasherDetails details={details} />
         </main>
     );
 };
