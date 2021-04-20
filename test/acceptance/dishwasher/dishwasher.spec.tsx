@@ -27,6 +27,7 @@ describe("Given we are on the Dishwasher Details Page", () => {
             additionalServices: {
                 includedServices: "2 year guarantee included",
             },
+            code: "81701226",
         };
 
         it("Then title should show", () => {
@@ -35,7 +36,7 @@ describe("Given we are on the Dishwasher Details Page", () => {
             expect(screen.getByText("Bosch Serie 2 SMS25EW00G Freestanding Dishwasher, White")).toBeInTheDocument();
         });
 
-        it("Then dishwasher details should show", () => {
+        it("Then the dishwasher details should show", () => {
             render(<DishwasherDetailsPage details={details} />);
 
             expect(
@@ -47,6 +48,7 @@ describe("Given we are on the Dishwasher Details Page", () => {
             const productInfoBlock = screen.getByText("Product Information");
             expect(within(productInfoBlock.parentElement!).getByText("The Bosch Info here")).toBeInTheDocument();
             expect(screen.getByText("2 year guarantee included")).toBeInTheDocument();
+            expect(screen.getByText("Product code: 81701226")).toBeInTheDocument();
         });
     });
 });

@@ -16,6 +16,7 @@ export interface DishwasherDetails {
     additionalServices: {
         includedServices: string
     };
+    code: string;
 }
 
 interface Props {
@@ -31,6 +32,7 @@ const DishwasherDetailsPage: React.FC<Props> = ({ details }) => {
             <div>{details.additionalServices.includedServices}</div>
             <div>
                 <h2>Product Information</h2>
+                <h3>Product code: {details.code}</h3>
                 <div dangerouslySetInnerHTML={{__html: details.details}} />
             </div>
         </main>
