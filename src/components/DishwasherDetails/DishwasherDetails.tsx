@@ -9,6 +9,7 @@ const DishwasherDetails: React.FC<Props> = ({ details }) => {
         <>
             <img src={details.media.images.urls[0]} alt={details.media.images.altText} />
             <div>&pound;{details.price.now}</div>
+            <div>{details.displaySpecialOffer}</div>
             <div>{details.additionalServices.includedServices}</div>
             <div>
                 <h2>Product Information</h2>

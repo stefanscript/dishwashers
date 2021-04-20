@@ -53,8 +53,7 @@ describe("Given we are on the Dishwasher Details Page", () => {
                 )
             ).toHaveAttribute("src", "//johnlewis.scene7.com/is/image/JohnLewis/237026151?");
             expect(screen.getByText("£379.00")).toBeInTheDocument();
-            const productInfoBlock = screen.getByText("Product Information");
-            expect(within(productInfoBlock.parentElement!).getByText("The Bosch Info here")).toBeInTheDocument();
+            expect(screen.getByText("The Bosch Info here")).toBeInTheDocument();
             expect(screen.getByText("2 year guarantee included")).toBeInTheDocument();
             expect(screen.getByText("Product code: 81701226")).toBeInTheDocument();
             expect(screen.getByText("Save £60 (price includes saving)")).toBeInTheDocument();
