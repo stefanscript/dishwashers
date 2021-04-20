@@ -79,8 +79,54 @@ describe("getServerSideProps", () => {
         resolvedUrl: "",
     } as unknown) as GetServerSidePropsContext;
 
+    const details: DishwasherDetailsInterface = {
+        title: "John Lewis & Partners JLBIDW1419 Fully Integrated Dishwasher",
+        media: {
+            images: {
+                altText: "Buy John Lewis & Partners JLBIDW1419 Fully Integrated Dishwasher Online at johnlewis.com",
+                urls: [
+                    "//johnlewis.scene7.com/is/image/JohnLewis/238096018alt1?",
+                    "//johnlewis.scene7.com/is/image/JohnLewis/238096018?",
+                    "//johnlewis.scene7.com/is/image/JohnLewis/238096018alt2?",
+                    "//johnlewis.scene7.com/is/image/JohnLewis/238096018alt3?",
+                    "//johnlewis.scene7.com/is/image/JohnLewis/238096018alt4?",
+                    "//johnlewis.scene7.com/is/image/JohnLewis/238096018alt10?",
+                ],
+            },
+        },
+        price: {
+            now: "429.00",
+        },
+        details: {
+            productInformation: "<p>Complete your kitchen with the John Lewis & Partners JLBIDW1419</p>",
+        },
+        features: [
+            {
+                name: "Type",
+                value: "Integrated",
+            },
+            {
+                name: "Rinse Aid Indicator",
+                value: "YES",
+            },
+            {
+                name: "Noise Level",
+                value: "46dB",
+            },
+            {
+                name: "Weighted Energy Consumption per 100 cycles for Eco cycle",
+                value: "85kWh",
+            },
+        ],
+        additionalServices: {
+            includedServices: "3 year guarantee included",
+        },
+        code: "88700203",
+        displaySpecialOffer: "Save £60 (price includes saving)",
+    };
+
     it("should call the correct api to get the products list", async () => {
-        mockFetch(200, {});
+        mockFetch(200, dishwasherDetailsData);
         const fetchSpy: any = jest.spyOn(global, "fetch");
 
         await getServerSideProps(context);
@@ -89,51 +135,6 @@ describe("getServerSideProps", () => {
     });
 
     it("on success, it should return the products list", async () => {
-        const details: DishwasherDetailsInterface = {
-            title: "John Lewis & Partners JLBIDW1419 Fully Integrated Dishwasher",
-            media: {
-                images: {
-                    altText: "Buy John Lewis & Partners JLBIDW1419 Fully Integrated Dishwasher Online at johnlewis.com",
-                    urls: [
-                        "//johnlewis.scene7.com/is/image/JohnLewis/238096018alt1?",
-                        "//johnlewis.scene7.com/is/image/JohnLewis/238096018?",
-                        "//johnlewis.scene7.com/is/image/JohnLewis/238096018alt2?",
-                        "//johnlewis.scene7.com/is/image/JohnLewis/238096018alt3?",
-                        "//johnlewis.scene7.com/is/image/JohnLewis/238096018alt4?",
-                        "//johnlewis.scene7.com/is/image/JohnLewis/238096018alt10?",
-                    ],
-                },
-            },
-            price: {
-                now: "429.00",
-            },
-            details: {
-                productInformation: "<p>Complete your kitchen with the John Lewis & Partners JLBIDW1419</p>",
-            },
-            features: [
-                {
-                    name: "Type",
-                    value: "Integrated",
-                },
-                {
-                    name: "Rinse Aid Indicator",
-                    value: "YES",
-                },
-                {
-                    name: "Noise Level",
-                    value: "46dB",
-                },
-                {
-                    name: "Weighted Energy Consumption per 100 cycles for Eco cycle",
-                    value: "85kWh",
-                },
-            ],
-            additionalServices: {
-                includedServices: "3 year guarantee included",
-            },
-            code: "88700203",
-            displaySpecialOffer: "Save £60 (price includes saving)",
-        };
         mockFetch(200, dishwasherDetailsData);
 
         const initProps = await getServerSideProps(context);
