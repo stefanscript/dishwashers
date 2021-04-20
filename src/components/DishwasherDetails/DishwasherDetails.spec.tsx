@@ -74,4 +74,10 @@ describe("DishwasherDetails", () => {
     it("renders the Special offers", () => {
         expect(screen.getByText("Save £400 (price includes saving)")).toBeInTheDocument();
     });
+
+    it("renders the Product Specification", () => {
+        const productSpec = within(screen.getByText("Product Specification").parentElement!);
+        expect(productSpec.getByText("Noise level")).toBeInTheDocument();
+        expect(productSpec.getByText("Not even the dogs can hear it")).toBeInTheDocument();
+    });
 });

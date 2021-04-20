@@ -16,6 +16,12 @@ const DishwasherDetails: React.FC<Props> = ({ details }) => {
                 <h3>Product code: {details.code}</h3>
                 <div dangerouslySetInnerHTML={{ __html: details.details.productInformation }} />
             </div>
+            <div>
+                <h2>Product Specification</h2>
+                <ul>
+                    <li><div>{details.features[0].name}</div><div>{details.features[0].value}</div></li>
+                </ul>
+            </div>
         </>
     );
 };
